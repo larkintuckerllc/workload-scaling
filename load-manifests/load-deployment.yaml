@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: load-signal
-        image: gcr.io/alf-testing/load:0.1.1
+        image: gcr.io/alf-testing/load:0.1.2
         command: 
         - /load-signal.sh
         resources:
@@ -29,7 +29,7 @@ spec:
         - mountPath: /signal 
           name: signal
       - name: load0
-        image: gcr.io/alf-testing/load:0.1.1
+        image: gcr.io/alf-testing/load:0.1.2
         command: 
         - /load.sh
         resources:
@@ -39,8 +39,11 @@ spec:
           limits:
             cpu: 100m
             memory: 100M
+        volumeMounts:
+        - mountPath: /signal 
+          name: signal         
       - name: load1
-        image: gcr.io/alf-testing/load:0.1.1
+        image: gcr.io/alf-testing/load:0.1.2
         command: 
         - /load.sh
         resources:
@@ -50,8 +53,11 @@ spec:
           limits:
             cpu: 100m
             memory: 100M
+        volumeMounts:
+        - mountPath: /signal 
+          name: signal
       - name: load2
-        image: gcr.io/alf-testing/load:0.1.1
+        image: gcr.io/alf-testing/load:0.1.2
         command: 
         - /load.sh
         resources:
@@ -61,8 +67,11 @@ spec:
           limits:
             cpu: 100m
             memory: 100M
+        volumeMounts:
+        - mountPath: /signal 
+          name: signal
       - name: load3
-        image: gcr.io/alf-testing/load:0.1.1
+        image: gcr.io/alf-testing/load:0.1.2
         command: 
         - /load.sh
         resources:
@@ -76,7 +85,7 @@ spec:
         - mountPath: /signal 
           name: signal
       - name: load4
-        image: gcr.io/alf-testing/load:0.1.1
+        image: gcr.io/alf-testing/load:0.1.2
         command: 
         - /load.sh
         resources:
@@ -90,7 +99,7 @@ spec:
         - mountPath: /signal 
           name: signal
       - name: load5
-        image: gcr.io/alf-testing/load:0.1.1
+        image: gcr.io/alf-testing/load:0.1.2
         command: 
         - /load.sh
         resources:
