@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: load
+  minReadySeconds: 0
+  template:
+    metadata:
+      labels:
+        app: load
+    spec:
+      containers:
+      - name: load-signal
+        image: gcr.io/alf-testing/load:0.1.1
+        command: 
+        - /load-signal.sh
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100M
+          limits:
+            cpu: 100m
+            memory: 100M
+        volumeMounts:
+        - mountPath: /signal 
+          name: signal
+      - name: load0
+        image: gcr.io/alf-testing/load:0.1.1
+        command: 
+        - /load.sh
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100M
+          limits:
+            cpu: 100m
+            memory: 100M
+      - name: load1
+        image: gcr.io/alf-testing/load:0.1.1
+        command: 
+        - /load.sh
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100M
+          limits:
+            cpu: 100m
+            memory: 100M
+      - name: load2
+        image: gcr.io/alf-testing/load:0.1.1
+        command: 
+        - /load.sh
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100M
+          limits:
+            cpu: 100m
+            memory: 100M
+      - name: load3
+        image: gcr.io/alf-testing/load:0.1.1
+        command: 
+        - /load.sh
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100M
+          limits:
+            cpu: 100m
+            memory: 100M
+        volumeMounts:
+        - mountPath: /signal 
+          name: signal
+      - name: load4
+        image: gcr.io/alf-testing/load:0.1.1
+        command: 
+        - /load.sh
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100M
+          limits:
+            cpu: 100m
+            memory: 100M
+        volumeMounts:
+        - mountPath: /signal 
+          name: signal
+      - name: load5
+        image: gcr.io/alf-testing/load:0.1.1
+        command: 
+        - /load.sh
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100M
+          limits:
+            cpu: 100m
+            memory: 100M
+        volumeMounts:
+        - mountPath: /signal 
+          name: signal
+      volumes:
+      - name: signal
+        emptyDir: {}
